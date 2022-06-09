@@ -16,7 +16,7 @@ arg erigon_branch="devel"
 
 run mkdir -p /build
 
-run git clone https://github.com/ledgerwatch/erigon.git
+run git clone --depth 1 https://github.com/ledgerwatch/erigon.git
 
 run cd erigon \
     && git checkout ${erigon_branch} \
@@ -30,14 +30,14 @@ RUN echo "cmd/sentry/sentry/sentry_multi_client.go" >> /opt/antithesis/go_instru
 WORKDIR /git
 RUN mkdir -p erigon_instrumented && LD_LIBRARY_PATH=/opt/antithesis/go_instrumentation/lib /opt/antithesis/go_instrumentation/bin/goinstrumentor -antithesis=/opt/antithesis/go_instrumentation/instrumentation/go/wrappers/ -exclude=/opt/antithesis/go_instrumentation/exclusions.txt -stderrthreshold=INFO erigon erigon_instrumented
 RUN cp -r erigon_instrumented/customer/* erigon/
-RUN cd erigon && go mod edit -require=antithesis.com/instrumentation/wrappers@v1.0.0 -replace antithesis.com/instrumentation/wrappers=/opt/antithesis/go_instrumentation/instrumentation/go/wrappers 
+RUN cd erigon && go mod edit -require=antithesis.com/instrumentation/wrappers@v1.0.0 -replace antithesis.com/instrumentation/wrappers=/opt/antithesis/go_instrumentation/instrumentation/go/wrappers
 # Antithesis -------------------------------------------------
 # Get dependencies
 RUN cd /git/erigon/ && go get -t -d ./...
 
 # TODO revisit once non-instrumented version is working
 #  && CGO_CFLAGS="-I/opt/antithesis/go_instrumentation/include" CGO_LDFLAGS="-L/opt/antithesis/go_instrumentation/lib" make erigon
-# 
+#
 run cd erigon/ \
     && CGO_CFLAGS="-I/opt/antithesis/go_instrumentation/include" make erigon
 

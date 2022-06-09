@@ -16,7 +16,7 @@ arg erigon_branch="devel"
 
 run mkdir -p /build
 
-run git clone https://github.com/ledgerwatch/erigon.git
+run git clone --depth 1 https://github.com/ledgerwatch/erigon.git
 
 run cd erigon \
     && git checkout ${erigon_branch} \
