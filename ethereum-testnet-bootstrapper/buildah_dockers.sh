@@ -52,15 +52,20 @@ cd ../
 # lastly we can go ahead and build the ethereum-testnet-boostrapper
 
 # mkdir tmp
-# 
+#
 # cd tmp
-# 
+#
 # git clone git@github.com:z3n-chada/ethereum-testnet-bootstrapper.git
-# 
+#
 # cd ethereum-testnet-boostrapper
-# 
+#
 # make build-bootstrapper
-# 
+#
 # cd ../../
-# 
+#
 # rm -rf tmp
+
+echo "\n\nYou can now push this image with the following commands:"
+echo "podman tag localhost/etb-all-clients:latest-inst us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/etb-all-clients:inst"
+echo "customer credentials.shell.registry"
+echo "podman push us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/etb-all-clients:inst"
