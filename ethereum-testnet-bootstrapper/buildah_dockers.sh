@@ -82,5 +82,5 @@ fi
 
 printf "\n\nYou can now push this image with the following commands:\n"
 echo "podman tag localhost/etb-all-clients:latest-inst us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/etb-all-clients:inst"
-echo "customer credentials.shell.registry"
+echo "cd ~/src/customer/customer-ethereum && customer credentials.shell.registry"
 echo "podman push us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/etb-all-clients:inst"
