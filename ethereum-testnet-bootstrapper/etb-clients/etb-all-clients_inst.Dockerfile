@@ -17,6 +17,7 @@ from z3nchada/etb-client-runner:latest
 
 copy --from=tx_fuzzer_builder /run/tx-fuzz.bin /usr/local/bin/tx-fuzz
 copy --from=geth_bad_block_builder /usr/local/bin/geth-bad-block /usr/local/bin/geth-bad-block-creator
+copy --from=geth_bad_block_builder /opt/antithesis/symbols/* /opt/antithesis/symbols/
 copy --from=geth_builder /usr/local/bin/geth /usr/local/bin/geth
 copy --from=geth_builder /usr/local/bin/bootnode /usr/local/bin/bootnode
 copy --from=geth_builder /opt/antithesis/symbols/* /opt/antithesis/symbols/
@@ -28,7 +29,7 @@ copy --from=nethermind_builder /nethermind/ /nethermind/
 copy --from=nethermind_builder /nethermind.version /nethermind.version
 run ln -s /nethermind/Nethermind.Runner /usr/local/bin/nethermind
 copy --from=erigon_builder /usr/local/bin/erigon /usr/local/bin/erigon
-# copy --from=erigon_builder /opt/antithesis/symbols/* /opt/antithesis/symbols/
+copy --from=erigon_builder /opt/antithesis/symbols/* /opt/antithesis/symbols/
 copy --from=erigon_builder /erigon.version /erigon.version
 
 # copy in all of the consensus clients
@@ -38,6 +39,7 @@ copy --from=lh_builder /usr/local/bin/lighthouse /usr/local/bin/lighthouse
 copy --from=lh_builder /lighthouse.version /lighthouse.version
 copy --from=nimbus_builder /usr/local/bin/nimbus_beacon_node /usr/local/bin/nimbus_beacon_node
 copy --from=nimbus_builder /usr/local/bin/nimbus_validator_client /usr/local/bin/nimbus_validator_client
+COPY --from=nimbus_builder /opt/antithesis/symbols/* /opt/antithesis/symbols/
 copy --from=nimbus_builder /nimbus.version /nimbus.version
 copy --from=prysm_builder /usr/local/bin/beacon-chain /usr/local/bin/beacon-chain
 copy --from=prysm_builder /usr/local/bin/validator /usr/local/bin/validator
