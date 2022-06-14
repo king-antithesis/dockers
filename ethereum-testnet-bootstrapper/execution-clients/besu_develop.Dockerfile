@@ -4,11 +4,11 @@ from z3nchada/etb-client-builder:latest as base
 
 WORKDIR /usr/src
 
-ARG BESU_BRANCH="main"
-
 from base as builder
 
-RUN git clone --progress https://github.com/hyperledger/besu.git && cd besu && git checkout ${BESU_BRANCH} && ./gradlew installDist
+ARG GIT_BRANCH="main"
+
+RUN git clone --progress https://github.com/hyperledger/besu.git && cd besu && git checkout ${GIT_BRANCH} && ./gradlew installDist
 
 RUN cd besu && git log -n 1 --format=format:"%H" > /besu.version
 
