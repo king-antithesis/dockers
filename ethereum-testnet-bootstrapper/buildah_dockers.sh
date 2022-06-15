@@ -73,7 +73,9 @@ cd ../
 # Check if log contains entries
 if [ -s $FAILED_IMAGES_LOG ]; then
 	printf "\n\n"
-	echo "The following images failed to build:"
+	RED='\033[0;31m'
+	NO_COLOR='\033[0m'
+	printf "${RED}The following images failed to build:${NO_COLOR}\n"
 	cat $FAILED_IMAGES_LOG
 	printf "\n\n"
 else
