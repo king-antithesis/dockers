@@ -50,6 +50,7 @@ cd etb-clients
 # buildah bud --registries-conf=registries.conf -f "etb-all-clients.Dockerfile" -t "etb-all-clients:latest" --format docker
 #docker build -t etb-all-clients:latest -f etb-all-clients.Dockerfile
 buildah bud --registries-conf=registries.conf -f "etb-all-clients_inst.Dockerfile" -t "etb-all-clients:latest-inst" --format docker || record_image_failure "etb-all-clients:latest-inst"
+podman tag localhost/etb-all-clients:latest-inst us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/etb-all-clients:inst
 #docker build -t etb-all-clients:latest-inst -f etb-all-clients_inst.Dockerfile
 
 cd ../
@@ -82,7 +83,6 @@ else
 	rm $FAILED_IMAGES_LOG
 fi
 
-printf "\n\nYou can now push this image with the following commands:\n"
-echo "podman tag localhost/etb-all-clients:latest-inst us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/etb-all-clients:inst"
-echo "cd ~/src/customer/customer-ethereum && customer credentials.shell.registry"
-echo "podman push us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/etb-all-clients:inst"
+cd ~/src/customer/customer-ethereum && \
+	customer credentials.shell.registry -c "podman push us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/etb-all-clients:inst" && \
+	echo "Done: etb-all-clients:inst image pushed successfully."
