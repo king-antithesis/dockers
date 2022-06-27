@@ -81,8 +81,8 @@ if [ -s $FAILED_IMAGES_LOG ]; then
 	printf "\n\n"
 else
 	rm $FAILED_IMAGES_LOG
-fi
 
-cd ~/src/customer/customer-ethereum && \
-	customer credentials.shell.registry -c "podman push us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/etb-all-clients:inst" && \
+	cd ~/src/customer/customer-ethereum && \
+		customer credentials.shell.registry -c "podman push us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/etb-all-clients:inst" && \
 	echo "Done: etb-all-clients:inst image pushed successfully."
+fi
