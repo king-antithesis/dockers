@@ -2,7 +2,7 @@
 from besu:develop as besu_builder
 from erigon:devel as erigon_builder
 from geth:master as geth_builder
-from nethermind:kiln as nethermind_builder
+from nethermind:master as nethermind_builder
 from geth:bad-block-creator as geth_bad_block_builder
 from tx-fuzzer:latest as tx_fuzzer_builder
 from lighthouse:unstable as lh_builder
@@ -22,7 +22,7 @@ copy --from=geth_builder /usr/local/bin/bootnode /usr/local/bin/bootnode
 copy --from=geth_builder /geth.version /geth.version
 copy --from=besu_builder /opt/besu /opt/besu
 copy --from=besu_builder /besu.version /besu.version
-run ln -s /opt/besu/bin/besu /usr/local/bin/besu 
+run ln -s /opt/besu/bin/besu /usr/local/bin/besu
 copy --from=nethermind_builder /nethermind/ /nethermind/
 copy --from=nethermind_builder /nethermind.version /nethermind.version
 run ln -s /nethermind/Nethermind.Runner /usr/local/bin/nethermind

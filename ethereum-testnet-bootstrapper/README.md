@@ -19,6 +19,6 @@ Dockers built and used in this repo:
 | geth:master               | intermediate docker for geth                             | N/A                                                                                                         |
 | erigon:devel              | intermediate docker for erigon                           | N/A                                                                                                         |
 | besu:main                 | intermedate docker for besu                              | N/A                                                                                                         |
-| nethermind:kiln           | intermediate docker for nethermind                       | N/A                                                                                                         |
+| nethermind:master         | intermediate docker for nethermind                       | N/A                                                                                                         |
 | geth:bad-block-creator    | intermediate docker for bad-block fuzzer                 | [z3nchada/geth-bad-block-creator](https://hub.docker.com/repository/docker/z3nchada/geth-bad-block-creator) |
 | tx-fuzzer:                | intermedate docker for transaction spamming              | [z3nchada/tx-fuzzer](https://hub.docker.com/repository/docker/z3nchada/geth-bad-block-creator)              |
