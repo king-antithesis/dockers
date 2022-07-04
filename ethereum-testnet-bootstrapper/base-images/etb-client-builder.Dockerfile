@@ -34,8 +34,8 @@ RUN wget --no-check-certificate https://apt.llvm.org/llvm.sh && chmod +x llvm.sh
 ENV LLVM_CONFIG=llvm-config-15
 
 # set up go
-RUN wget https://go.dev/dl/go1.17.9.linux-amd64.tar.gz
-RUN tar -zxvf go1.17.9.linux-amd64.tar.gz -C /usr/local/
+RUN wget https://go.dev/dl/go1.18.3.linux-amd64.tar.gz
+RUN tar -zxf go1.18.3.linux-amd64.tar.gz -C /usr/local/
 RUN ln -s /usr/local/go/bin/go /usr/local/bin/go
 RUN ln -s /usr/local/go/bin/gofmt /usr/local/bin/gofmt
 
@@ -45,7 +45,7 @@ run apt update \
     && apt install curl ca-certificates -y --no-install-recommends \
     && curl -sL https://deb.nodesource.com/setup_17.x | bash -
 
-run apt-get update && apt-get install -y --no-install-recommends nodejs 
+run apt-get update && apt-get install -y --no-install-recommends nodejs
 
 # set up cargo/rustc with nightly
 # reference: https://github.com/rust-lang/docker-rust/blob/59ffcf40eed2aca0160790f0ae2f0288868e0291/1.60.0/bullseye/Dockerfile
@@ -74,7 +74,7 @@ RUN set -eux; \
     cargo --version; \
     rustc --version;
 
-# build the rocksdb 
+# build the rocksdb
 RUN git clone https://github.com/facebook/rocksdb.git
 RUN cd rocksdb && make -j32 install
 
