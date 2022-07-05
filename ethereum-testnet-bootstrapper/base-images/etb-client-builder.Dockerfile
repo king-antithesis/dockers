@@ -43,7 +43,7 @@ RUN ln -s /usr/local/go/bin/gofmt /usr/local/bin/gofmt
 # Install nodejs
 run apt update \
     && apt install curl ca-certificates -y --no-install-recommends \
-    && curl -sL https://deb.nodesource.com/setup_17.x | bash -
+    && curl -sL https://deb.nodesource.com/setup_16.x | bash -
 
 run apt-get update && apt-get install -y --no-install-recommends nodejs
 
