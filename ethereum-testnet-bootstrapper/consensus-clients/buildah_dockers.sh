@@ -13,5 +13,5 @@ done
 
 # buildah bud --registries-conf=registries.conf -f "prysm_develop-inst.Dockerfile" -t "prysm:develop-inst" --format docker
 # buildah bud --registries-conf=registries.conf -f "nimbus_kiln-dev-auth-inst.Dockerfile" -t "nimbus:kiln-dev-auth-inst" --format docker
-# buildah bud --registries-conf=registries.conf -f "nimbus_kiln-dev-auth.Dockerfile" -t "nimbus:kiln-dev-auth" --format docker
-# buildah bud --registries-conf=registries.conf -f "prysm_develop-inst.Dockerfile" -t "prysm:develop-inst" --format docker
+# buildah bud --registries-conf=registries.conf -f "lighthouse_unstable-inst.Dockerfile" -t "lighthouse:unstable-inst" --format docker
+# buildah bud --registries-conf=registries.conf -f "lodestar_master.Dockerfile" -t "lodestar:master" --format docker
