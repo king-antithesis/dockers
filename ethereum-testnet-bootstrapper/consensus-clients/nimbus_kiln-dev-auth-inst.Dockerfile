@@ -1,8 +1,8 @@
 FROM z3nchada/etb-client-builder:latest as builder
 
 WORKDIR /git
-# Included here to avoid build-time complaints
-ARG BRANCH="unstable"
+# ARG BRANCH="unstable"
+ARG BRANCH="jsonnode-not-nil"
 
 RUN git clone https://github.com/status-im/nimbus-eth2.git
 
