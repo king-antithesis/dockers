@@ -32,9 +32,9 @@ COPY go_instrumentation /opt/antithesis/go_instrumentation
 
 RUN apt update && apt install -y --no-install-recommends lsb-release wget software-properties-common
 
-RUN wget --no-check-certificate https://apt.llvm.org/llvm.sh && chmod +x llvm.sh && ./llvm.sh 15
+RUN wget --no-check-certificate https://apt.llvm.org/llvm.sh && chmod +x llvm.sh && ./llvm.sh 14
 
-ENV LLVM_CONFIG=llvm-config-15
+ENV LLVM_CONFIG=llvm-config-14
 
 RUN rm -rf /git
 

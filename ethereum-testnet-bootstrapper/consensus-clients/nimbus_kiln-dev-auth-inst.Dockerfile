@@ -4,12 +4,18 @@ WORKDIR /git
 # ARG BRANCH="unstable"
 ARG BRANCH="jsonnode-not-nil"
 
+RUN ./llvm.sh 14
+ENV LLVM_CONFIG=llvm-config-14
+
+ARG NIMFLAGS="-d:disableMarchNative --cc:clang --clang.exe:clang-14 --clang.linkerexe:clang-14 --passC:'-fno-lto -fsanitize-coverage=trace-pc-guard' --passL:'-fno-lto -L/usr/lib/ -lvoidstar'"
+
 RUN git clone https://github.com/status-im/nimbus-eth2.git
 
 RUN cd nimbus-eth2 && git checkout ${BRANCH}
 
-RUN cd nimbus-eth2 && make -j64 nimbus_beacon_node NIMFLAGS="-d:disableMarchNative --cc:clang --clang.exe:clang-15 --clang.linkerexe:clang-15 --passC:'-fno-lto -fsanitize-coverage=trace-pc-guard' --passL:'-fno-lto -L/usr/lib/ -lvoidstar'" \
-                   && make -j64 nimbus_validator_client NIMFLAGS="-d:disableMarchNative --cc:clang --clang.exe:clang-15 --clang.linkerexe:clang-15 --passC:'-fno-lto -fsanitize-coverage=trace-pc-guard' --passL:'-fno-lto -L/usr/lib/ -lvoidstar'"
+
+RUN cd nimbus-eth2 && make -j64 nimbus_beacon_node NIMFLAGS="${NIMFLAGS}" \
+                   && make -j64 nimbus_validator_client NIMFLAGS="${NIMFLAGS}"
 
 RUN cd nimbus-eth2 && git log -n 1 --format=format:"%H" > /nimbus.version
 from z3nchada/etb-client-runner:latest
