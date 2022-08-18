@@ -15,3 +15,4 @@ done
 # buildah bud --registries-conf=registries.conf -f "geth_master-inst.Dockerfile" -t "geth:master-inst" --format docker
 # erigon_devel-inst.Dockerfile
 # buildah bud --registries-conf=registries.conf -f "erigon_devel-inst.Dockerfile" -t "erigon:devel-inst" --format docker
+# buildah bud --registries-conf=registries.conf -f "nethermind_master.Dockerfile" -t "nethermind:master" --format docker
