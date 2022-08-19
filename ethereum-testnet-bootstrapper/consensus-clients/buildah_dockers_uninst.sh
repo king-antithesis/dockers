@@ -3,7 +3,7 @@
 # Import `record_image_failure` function
 source ../common.sh
 
-for df in $(ls | grep 'inst.Dockerfile\|master.Dockerfile'); do
+for df in $(ls | grep Dockerfile); do
     echo $df
     i=`echo $df | tr '_' ':'`
     image=`echo "${i::-11}"`
@@ -12,7 +12,6 @@ for df in $(ls | grep 'inst.Dockerfile\|master.Dockerfile'); do
 done
 
 # buildah bud --registries-conf=registries.conf -f "prysm_develop-inst.Dockerfile" -t "prysm:develop-inst" --format docker
-# buildah bud --registries-conf=registries.conf -f "prysm_pprof.Dockerfile" -t "prysm:pprof" --format docker
 # buildah bud --registries-conf=registries.conf -f "nimbus_kiln-dev-auth-inst.Dockerfile" -t "nimbus:kiln-dev-auth-inst" --format docker
 # buildah bud --registries-conf=registries.conf -f "lighthouse_unstable-inst.Dockerfile" -t "lighthouse:unstable-inst" --format docker
 # buildah bud --registries-conf=registries.conf -f "lodestar_master.Dockerfile" -t "lodestar:master" --format docker
