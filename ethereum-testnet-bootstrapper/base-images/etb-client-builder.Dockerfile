@@ -39,12 +39,10 @@ RUN tar -zxf go1.18.3.linux-amd64.tar.gz -C /usr/local/
 RUN ln -s /usr/local/go/bin/go /usr/local/bin/go
 RUN ln -s /usr/local/go/bin/gofmt /usr/local/bin/gofmt
 
-# set up nodejs
 # Install nodejs
 run apt update \
     && apt install curl ca-certificates -y --no-install-recommends \
     && curl -sL https://deb.nodesource.com/setup_16.x | bash -
-
 run apt-get update && apt-get install -y --no-install-recommends nodejs
 
 # set up cargo/rustc with nightly

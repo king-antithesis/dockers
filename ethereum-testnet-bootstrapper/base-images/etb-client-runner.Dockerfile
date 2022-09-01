@@ -8,12 +8,14 @@ run mkdir -p /rocksdb/lib && cd rocksdb && cp librocksdb.so* /rocksdb/lib/
 
 
 from debian:bullseye-slim as base
-# Install nodejs
+
 workdir /git
 
-run apt update && apt install curl ca-certificates -y --no-install-recommends && curl -sL https://deb.nodesource.com/setup_17.x | bash -
-
-run apt-get update && apt-get install -y --no-install-recommends nodejs 
+# Install nodejs
+run apt update \
+    && apt install curl ca-certificates -y --no-install-recommends \
+    && curl -sL https://deb.nodesource.com/setup_16.x | bash -
+run apt-get update && apt-get install -y --no-install-recommends nodejs
 
 RUN apt-get update && apt-get install -y --no-install-recommends wget libgflags-dev libsnappy-dev zlib1g-dev libbz2-dev liblz4-dev libzstd-dev openjdk-17-jre wget 
 
